@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Venue</title>
+</head>
+<body>
+    <h2>Add New Venue</h2>
+    <form th:action="@{/saveVenue}" th:object="${venue}" method="post">
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" required="required" />
+        <label>Address:</label>
+        <input type="address" th:field="*{address}" required="required" />
+        <label>Capacity:</label>
+        <input type="capacity" th:field="*{capacity}" required="required" />
+     
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

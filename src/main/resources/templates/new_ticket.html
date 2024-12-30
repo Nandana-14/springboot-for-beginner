@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Ticket</title>
+</head>
+<body>
+    <h2>Add New Ticket</h2>
+    <form th:action="@{/saveTicket}" th:object="${ticket}" method="post">
+        <label>EventId:</label>
+        <input type="text" th:field="*{eventId}" required="required" />
+        <label>UserId:</label>
+        <input type="userId" th:field="*{userId}" required="required" />
+        <label>TicketType:</label>
+        <input type="ticketType" th:field="*{ticketType}" required="required" />
+        <label>Price:</label>
+        <input type="price" th:field="*{price}" required="required" />
+        
+        
+     
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

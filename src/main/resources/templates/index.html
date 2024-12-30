@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>DewDropsEvent Management</title>
+</head>
+
+<body>
+	<h2>DewDropsEvent Management</h2>
+	<a href="/showNewUserForm">Add New User</a>
+	<a href="/showNewEventForm">Add New Event</a>
+	<a href="/showNewVenueForm">Add New Venue</a>
+	<a href="/showNewRegistrationForm">Add New Registration</a>
+	<a href="/showNewTicketForm">Add New Ticket</a>
+	<a href="/showNewPaymentForm">Add New Payment</a>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>UserID</th>
+				<th>UserName</th>
+				<th>Password</th>
+				<th>role</th>
+				<th>PhoneNo</th>
+			</tr>
+			<tr>
+				<th>EventID</th>
+				<th>VenueId</th>
+				<th>OrganizerId</th>
+				<th>Name</th>
+				<th>StartTime</th>
+				<th>EndTime</th>
+			</tr>
+			<tr>
+				<th>VenueID</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Capacity</th>
+			</tr>
+			
+			<tr>
+				<th>RegistrationID</th>
+				<th>EventId</th>
+				<th>UserId</th>
+				<th>RegistrationDate</th>
+				<th>Status</th>
+			</tr>
+			<tr>
+				<th>TicketID</th>
+				<th>EventId</th>
+				<th>UserId</th>
+				<th>TicketType</th>
+				<th>Price</th>
+				
+			</tr>
+			<tr>
+				<th>PaymentID</th>
+				<th>UserId</th>
+				<th>TicketId</th>
+				<th>Amount</th>
+				<th>PaymentDate</th>
+				<th>PaymentStatus</th>
+				<th>PaymentMode</th>
+			</tr>
+			
+		</thead>
+		<tbody>
+			<tr th:each="user : ${listUsers}">
+				<td th:text="${user.userId}"></td>
+				<td th:text="${user.username}"></td>
+				<td th:text="${user.password}"></td>
+				<td th:text="${user.role}"></td>
+				<td th:text="${user.phoneNo}"></td>
+
+				<td>
+					<a th:href="@{/showFormForUpdate/{id}(id=${user.id})}">Edit</a>
+					<a th:href="@{/deleteUser/{id}(id=${user.id})}">Delete</a>
+				</td>
+			</tr>
+			<tr th:each="event : ${listEvents}">
+				<td th:text="${event.eventId}"></td>
+				<td th:text="${event.venueId}"></td>
+				<td th:text="${event.organizerId}"></td>
+				<td th:text="${event.Name}"></td>
+				<td th:text="${event.startTime}"></td>
+				<td th:text="${event.endTime}"></td>
+
+				<td>
+					<a th:href="@{/showFormForUpdate/{eventId}(eventId=${event.eventId})}">Edit</a>
+					<a th:href="@{/deleteEvent/{eventid}(eventId=${event.eventId})}">Delete</a>
+				</td>
+			</tr>
+			<tr th:each="venue : ${listVenues}">
+				<td th:text="${venue.venueId}"></td>
+				<td th:text="${venue.name}"></td>
+				<td th:text="${venue.address}"></td>
+				<td th:text="${venue.capacity}"></td>
+
+				<td>
+					<a th:href="@{/showFormForUpdate/{venueId}(venueId=${venue.venueId})}">Edit</a>
+					<a th:href="@{/deleteVenue/{venueId}(venueId=${venue.venueId})}">Delete</a>
+				</td>
+			</tr>
+			<tr th:each="registration : ${listRegistrations}">
+				<td th:text="${registration.registrationId}"></td>
+				<td th:text="${registration.eventId}"></td>
+				<td th:text="${registration.userId}"></td>
+				<td th:text="${registration.registrationDate}"></td>
+				<td th:text="${registration.status}"></td>
+
+				<td>
+					<a th:href="@{/showFormForUpdate/{registrationId}(registrationId=${registration.registrationId})}">Edit</a>
+					<a th:href="@{/deleteRegistration/{registrationid}(registrationId=${registration.registrationId})}">Delete</a>
+				</td>
+			</tr>
+			<tr th:each="ticket : ${listTickets}">
+				<td th:text="${ticket.ticketId}"></td>
+				<td th:text="${ticket.eventId}"></td>
+				<td th:text="${ticket.userId}"></td>
+				<td th:text="${ticket.ticketType}"></td>
+				<td th:text="${ticket.price}"></td>
+			
+
+				<td>
+					<a th:href="@{/showFormForUpdate/{ticketId}(ticketId=${ticket.ticketId})}">Edit</a>
+					<a th:href="@{/deleteTicket/{ticketid}(ticketId=${ticket.ticketId})}">Delete</a>
+				</td>
+			</tr>
+			<tr th:each="payment : ${listPayments}">
+				<td th:text="${payment.paymentId}"></td>
+				<td th:text="${payment.userId}"></td>
+				<td th:text="${payment.ticketId}"></td>
+				<td th:text="${payment.amount}"></td>
+				<td th:text="${payment.paymentDate}"></td>
+				<td th:text="${payment.paymentStatus}"></td>
+				<td th:text="${payment.paymentMode}"></td>
+
+				<td>
+					<a th:href="@{/showFormForUpdate/{paymentId}(paymentId=${payment.paymentId})}">Edit</a>
+					<a th:href="@{/deletePayment/{paymentid}(paymentId=${payment.paymentId})}">Delete</a>
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+</body>
+
+</html>

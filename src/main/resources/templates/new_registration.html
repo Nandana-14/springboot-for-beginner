@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Registration</title>
+</head>
+<body>
+    <h2>Add New Registration</h2>
+    <form th:action="@{/saveRegistration}" th:object="${registration}" method="post">
+        <label>EventId:</label>
+        <input type="text" th:field="*{eventId}" required="required" />
+        <label>UserId:</label>
+        <input type="userId" th:field="*{userId}" required="required" />
+        <label>RegistrationDate:</label>
+        <input type="registrationDate" th:field="*{registrationDate}" required="required" />
+        <label>Status:</label>
+        <input type="status" th:field="*{status}" required="required" />
+        
+     
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
